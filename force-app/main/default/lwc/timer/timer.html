@@ -1,0 +1,43 @@
+<template>
+    <lightning-card>
+        <h1 class="display">
+            <strong>Time Left : </strong>
+            <span>{timeLeft}</span>
+        </h1>
+    </lightning-card>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="around-small">
+           <h1>
+               <strong>
+                   Enter a date/time Value
+               </strong>
+           </h1>
+        </lightning-layout-item>
+        <!-- date -->
+        <lightning-layout-item size="6" padding="around-small">
+            <label for="date">Date</label>
+            <input  id="date"
+                    class="date"
+                    onchange={handleInput} 
+                    type="date" 
+                    name="date" />
+        </lightning-layout-item>
+        <!-- time -->
+        <lightning-layout-item size="6" padding="around-small">
+            <label for="time">Time</label>
+            <input  id="time"
+                    class="time"
+                    onchange={handleInput} 
+                    type="time" 
+                    name="time" />
+        </lightning-layout-item>
+        <!-- start -->
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-button onclick={handleClick}
+                              variant="brand"
+                              class="start"
+                              label="Start">
+           </lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
