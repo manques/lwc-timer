@@ -17,8 +17,10 @@ export default class Timer extends LightningElement {
                     this.time = element.value;
                 }
             });
-            clearInterval(this.clearInterval);
-            this.handleDateTime(this.date, this.time);
+            if(this.date && this.time){
+                clearInterval(this.clearInterval);
+                this.handleDateTime(this.date, this.time);
+            }
     }
 
     handleDateTime(date, time) {
@@ -36,9 +38,12 @@ export default class Timer extends LightningElement {
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            this.timeLeft = `${hours}h ${minutes}m ${seconds}s`;
-            if(days !== 0){
-                this.timeLeft = `${days} days ${this.timeLeft}`;
+            if(days > 0){
+                this.timeLeft = `${days} days ${hours}h ${minutes}m ${seconds}s`;
+            } else if(days === 0){
+                this.timeLeft = `${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                this.timeLeft = `Expired`;
             }
             console.log(this.timeLeft);
         }, 1000);
